@@ -8,17 +8,25 @@ import CampaignImage from "./parts/CampaignImage";
 
 const CampaignItems = () => {
   return (
-    <div>
-      <CampaignImage></CampaignImage>
+    <div >
+      <CampaignImage
+  
+      ></CampaignImage>
+
       <div className="px-5 py-4 ">
         <CampaignCategory>Education</CampaignCategory>
         <CampaignTitle>Powered Kits Learning Boxes</CampaignTitle>
-        <CampaignDesc >Fun, durable and reusable boxes with eco-friendly options.</CampaignDesc>
+        <CampaignDesc>
+          Fun, durable and reusable boxes with eco-friendly options.
+        </CampaignDesc>
         <div className="flex item-start justify-between gap-x-5 mb-5">
-       <CampaignInfor amount={"$2,000"} text={"Raised of $1,900"}></CampaignInfor>
-       <CampaignInfor amount={"173"} text={"Total backers"}></CampaignInfor>
+          <CampaignInfor
+            amount={"$2,000"}
+            text={"Raised of $1,900"}
+          ></CampaignInfor>
+          <CampaignInfor amount={"173"} text={"Total backers"}></CampaignInfor>
         </div>
-       <CampaignAuthor author={"Mahfuzul Nabil"}></CampaignAuthor>
+        <CampaignAuthor author={"Mahfuzul Nabil"}></CampaignAuthor>
       </div>
     </div>
   );

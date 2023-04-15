@@ -5,10 +5,10 @@ import CampaignTitle from "./parts/CampaignTitle";
 import CampaignDesc from "./parts/CampaignDesc";
 import CampaignCategory from "./parts/CampaignCategory";
 
-const CampaignFeature = () => {
+const CampaignFeature = ({type}) => {
   return (
-    <div className="flex items-start gap-x-[30px] w-full max-w-[1048px] ">
-      <CampaignImage className="h-[266px] w-full flex-1"></CampaignImage>
+    <div className={`flex items-start gap-x-[30px] w-full max-w-[1048px] `}>
+      <CampaignImage className={type === "col1" ? "w-[583px] h-[266px] flex-1" : "h-[266px] w-full flex-1"} ></CampaignImage>
       <div className="p-5 flex-1">
         <CampaignCategory className="!text-sm">Architecture</CampaignCategory>
         <CampaignTitle className="text-xl font-bold mb-6">Remake - We Make architecture exhibition</CampaignTitle>
