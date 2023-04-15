@@ -5,9 +5,9 @@ const LayoutDashBoard = ({children}) => {
     return (
         <div className='bg-lite w-full p-10'>
             <TopBar></TopBar>
-            <div className='flex gap-10'>
+            <div className='flex gap-10 items-start'>
             <SideBar></SideBar>
-            <div>
+            <div className='flex-1'>
             {children}
             </div>
             </div>

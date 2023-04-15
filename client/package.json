@@ -23,6 +23,7 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.2.3",
+    "uuid": "^9.0.0",
     "yup": "^1.0.2"
   },
   "devDependencies": {

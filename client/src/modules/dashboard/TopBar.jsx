@@ -3,7 +3,7 @@ import Search from "../../components/Search";
 import DashBoardFund from "./DashBoardFund";
 const TopBar = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center mb-8">
       <div className="flex items-center gap-x-14">
         <img srcSet="./Logo.png 2x" alt="" />
         <Search></Search>

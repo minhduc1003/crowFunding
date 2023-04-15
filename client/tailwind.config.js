@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
 export default {
   darkMode:"class",
   content: [
@@ -34,9 +35,18 @@ export default {
       },
       flex:{
         "2": "1 0 84%",
-      }
+      },
+      
 
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addVariant, e }) {
+      addVariant('six-child', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`six-child${separator}${className}`)}:nth-child(6)`
+        })
+      })
+    })
+  ],
 }
