@@ -9,7 +9,7 @@ import CampaignImage from "./parts/CampaignImage";
 const CampaignItems = () => {
   return (
     <div >
-      <CampaignImage
+      <CampaignImage className={"h-[157px]"}
   
       ></CampaignImage>
 

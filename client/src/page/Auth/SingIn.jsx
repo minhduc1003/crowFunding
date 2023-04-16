@@ -7,6 +7,7 @@ import Submit from '../../components/Submit';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Button from '../../components/Button';
 const SingIn = () => {
   const regex = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/ ;
   const schema = yup.object({
@@ -59,7 +60,8 @@ const SingIn = () => {
         className={errors.password?.message?"!border-error placeholder:text-error":""}
       ></Label>
      <Link to={"/forgotPassword"} className='w-full flex justify-end text-primary my-4 text-sm'>Forgot password</Link>
-      <Submit type={"submit"} content={"Create my account"}></Submit>
+      {/* <Submit type={"submit"} content={"Create my account"}></Submit> */}
+      <Button kind={"primary"} className={"w-full"}>Create my account</Button>
       </form>
         </LayoutAuthentication>
     );

@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Submit from "../../components/Submit";
 import LayoutAuthentication from "../../layout/LayoutAuthentication"
+import Button from "../../components/Button";
 
 const SignUpPage = () => {
   const regex = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/ ;
@@ -87,7 +88,8 @@ const SignUpPage = () => {
             <Link className="text-secondary">Privacy policy</Link>.
           </p>
         </div>
-        <Submit type={"submit"} content={"Create my account"}></Submit>
+        {/* <Submit type={"submit"} content={"Create my account"}></Submit> */}
+        <Button kind={"primary"} className={"w-full"}>Create my account</Button>
       </form>
     </LayoutAuthentication>
   );
