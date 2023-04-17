@@ -11,7 +11,7 @@ const TopBar = () => {
       </div>
       <div className="flex items-center gap-x-10">
         <DashBoardFund></DashBoardFund>
-        <Button kind={"secondary"}>Start a campaign</Button>
+        <Button kind={"secondary"} href={"/Start-Campaign"}>Start a campaign</Button>
         <div className="w-12 h-12 rounded-full">
           <img
             className="w-full h-full rounded-full object-cover"

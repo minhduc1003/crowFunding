@@ -2,16 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-  html{
-    font-family: 'Epilogue', sans-serif;
+  html {
+    font-family: "Epilogue", sans-serif;
   }
-  body{
+  body {
     @apply text-base;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing: antialiased;
     line-height: 1.5;
   }
 }
-input{
+input {
   @apply outline-none;
+}
+.quill {
+  border: 1px solid #f1f1f3;
+  border-radius: 10px;
+  padding: 15px 25px;
+  margin-top: 15px;
+}
+.ql-toolbar.ql-snow {
+  border: none !important;
+  @apply !bg-[#B2B3BD];
+  @apply bg-opacity-20;
+  padding: 12px 18px;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.ql-container.ql-snow {
+  border: none !important;
+  background: none !important;
+  height: 250px;
+  font-size: 16px;
 }

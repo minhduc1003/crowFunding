@@ -34,7 +34,7 @@ const CampaignPage = () => {
             <p className="text-primary text-sm">Need any help? Learn More...</p>
           </div>
         </div>
-        <Button className={"py-4 px-6"} kind={"ghost"}>Create campaign</Button>
+        <Button className={"py-4 px-6"} kind={"ghost"} href={"/Start-Campaign"}>Create campaign</Button>
       </div>
       <Heading number={4}>Your Campaign</Heading>
       <CampaignGrid type={"col1"}>
