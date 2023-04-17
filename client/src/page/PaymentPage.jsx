@@ -1,12 +1,7 @@
-import React from 'react';
-import LayoutDashBoard from '../layout/LayoutDashBoard';
+import React from "react";
 
 const PaymentPage = () => {
-    return (
-        <LayoutDashBoard>
-            
-        </LayoutDashBoard>
-    );
+  return <></>;
 };
 
 export default PaymentPage;

@@ -1,10 +1,7 @@
-import React from 'react';
-import LayoutDashBoard from '../layout/LayoutDashBoard';
+import React from "react";
 
 const WithdrawPage = () => {
-    return (
-        <LayoutDashBoard></LayoutDashBoard>
-    );
+  return <></>;
 };
 
 export default WithdrawPage;
