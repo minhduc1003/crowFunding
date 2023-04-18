@@ -9,7 +9,7 @@ const LayoutDashBoard = () => {
       <TopBar></TopBar>
       <div className="flex gap-10 items-start">
         <SideBar></SideBar>
-        <div className="flex-1">
+        <div className="flex-3 ">
           <Outlet></Outlet>
         </div>
       </div>

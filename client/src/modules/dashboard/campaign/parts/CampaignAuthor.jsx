@@ -1,6 +1,6 @@
 import React from "react";
 
-const CampaignAuthor = ({image="./user.png",author}) => {
+const CampaignAuthor = ({ image = "/user.png", author }) => {
   return (
     <div className="flex gap-x-2 items-center">
       <div className="w-8 h-8 ">

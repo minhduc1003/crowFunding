@@ -8,10 +8,8 @@ import CampaignImage from "./parts/CampaignImage";
 
 const CampaignItems = () => {
   return (
-    <div >
-      <CampaignImage className={"h-[157px]"}
-  
-      ></CampaignImage>
+    <div>
+      <CampaignImage className={"h-[200px]"}></CampaignImage>
 
       <div className="px-5 py-4 ">
         <CampaignCategory>Education</CampaignCategory>

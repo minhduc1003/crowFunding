@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 export default {
-  darkMode:"class",
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: "class",
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors:{
+      colors: {
         primary: "#1DC071",
         secondary: "#6F49FD",
         text1: "#171725",
@@ -33,20 +30,21 @@ export default {
       boxShadow: {
         sdprimary: "10px 10px 20px rgba(211, 211, 211, 0.25)",
       },
-      flex:{
-        "2": "1 0 84%",
+      flex: {
+        2: "1 0 84%",
+        3: "1 1 100%",
+        4: "1 1 50%",
+        5: "1 1 50%",
       },
-      
-
     },
   },
   plugins: [
-    plugin(function({ addVariant, e }) {
-      addVariant('six-child', ({ modifySelectors, separator }) => {
+    plugin(function ({ addVariant, e }) {
+      addVariant("six-child", ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {
-          return `.${e(`six-child${separator}${className}`)}:nth-child(6)`
-        })
-      })
-    })
+          return `.${e(`six-child${separator}${className}`)}:nth-child(6)`;
+        });
+      });
+    }),
   ],
-}
+};

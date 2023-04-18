@@ -37,3 +37,31 @@ input {
   height: 250px;
   font-size: 16px;
 }
+.story {
+  @apply text-text3  text-base;
+}
+.story > p {
+  @apply text-text3  text-base p-5 mb-2;
+}
+.story > h3 {
+  @apply text-text1 font-semibold text-xl p-5 mb-5;
+}
+.story > h2 {
+  @apply text-text1 font-semibold text-xl p-5 mb-5;
+}
+.story > h1 {
+  @apply text-text1 font-semibold text-xl p-5 mb-5;
+}
+.story > img {
+  @apply w-full h-[400px] object-cover rounded-lg lg:h-[500px];
+}
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+.scroll-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
