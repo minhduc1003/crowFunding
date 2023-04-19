@@ -1,8 +1,7 @@
 import React from "react";
 import { useDropdown } from "./dropdown-context";
 
-const Option = (props) => {
-  const { onClick } = props;
+const Option = ({ onClick = () => {}, ...props }) => {
   const { setShow } = useDropdown();
   const handleClick = () => {
     onClick && onClick();

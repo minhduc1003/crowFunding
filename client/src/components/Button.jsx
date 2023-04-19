@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ children, className, kind, href, type = "text" }) => {
+const Button = ({
+  children,
+  className,
+  kind,
+  href,
+  type = "text",
+  onClick,
+}) => {
   let defaultClassName = "outline-none rounded-lg px-6 py-3";
   switch (kind) {
     case "primary":
@@ -23,7 +30,11 @@ const Button = ({ children, className, kind, href, type = "text" }) => {
       </Link>
     );
   return (
-    <button type={type} className={` ${defaultClassName} ${className}`}>
+    <button
+      type={type}
+      className={` ${defaultClassName} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

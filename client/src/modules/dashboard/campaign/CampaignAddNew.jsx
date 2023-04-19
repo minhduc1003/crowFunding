@@ -1,15 +1,20 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import FormRow from "../../../components/common/FormRow";
 import Label from "../../../components/Label";
 import { Dropdown } from "../../../components/dropdown/index";
 import Textarea from "../../../components/Textarea";
 import FormGroup from "../../../components/common/FormGroup";
-
+import axios from "axios";
 import LableDropDown from "../../../components/LableDropDown";
 import Quill from "../../../components/Quill";
 import Button from "../../../components/Button";
-
+import useOnChangeWords from "../../../hooks/useOnChangeWords";
+import { v4 } from "uuid";
+import { apiCategory } from "../../../api/config";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ImageUpload from "../../../components/image/ImageUpload";
 const CampaignAddNew = () => {
   const {
     handleSubmit,
@@ -17,12 +22,65 @@ const CampaignAddNew = () => {
     getValues,
     formState: { errors, isSubmitting },
     control,
+    watch,
+    reset,
   } = useForm({
     mode: "onChange",
-    defaultValues: "",
+    defaultValues: {
+      category: "",
+      CampaignEnd: "",
+      Country: "",
+      title: "",
+      Goal: "",
+      AmountPrefilled: "",
+      Video: "",
+      CampaignTitel: "",
+      StartDate: "",
+      EndDate: "",
+    },
   });
 
-  function handleAddNew(value) {}
+  const [content, setContent] = useState("");
+  function dropdownSetValue(name, value) {
+    setValue(name, value);
+  }
+
+  async function handleAddNew(values) {
+    try {
+      await axios.post(`${apiCategory}/Category`, {
+        ...values,
+        content,
+      });
+      toast.success("Up load complete");
+      reset({
+        category: "",
+        CampaignEnd: "",
+        Country: "",
+        title: "",
+        Goal: "",
+        AmountPrefilled: "",
+        Video: "",
+        CampaignTitel: "",
+        StartDate: "",
+        EndDate: "",
+      });
+      setContent("");
+    } catch (e) {
+      toast.error("Can not create Campaign post");
+    }
+  }
+  const [data, setData] = useState([]);
+  const [getCountry, setGetCountry] = useOnChangeWords(500);
+  useEffect(() => {
+    const fetchCountry = async () => {
+      if (!getCountry) return false;
+      const res = await axios.get(
+        `https://restcountries.com/v3.1/name/${getCountry}`
+      );
+      setData(res.data);
+    };
+    fetchCountry();
+  }, [getCountry]);
   return (
     <div className="bg-white rounded-xl py-10 px-[66px] ">
       <div className="flex justify-center items-center mb-10 ">
@@ -41,28 +99,60 @@ const CampaignAddNew = () => {
             control={control}
             name={"title"}
           ></Label>
-          <LableDropDown
-            placeholder={"Select category"}
-            lable={"Category"}
-            name={"Category"}
-            item={"duc dz vcc"}
-          ></LableDropDown>
+          <div>
+            <h3 className="mt-5  text-text2 text-sm block font-bold  ">
+              Category
+            </h3>
+            <Dropdown>
+              <Dropdown.Select
+                placeholder={
+                  watch("category") !== ""
+                    ? watch("category")
+                    : "Select category"
+                }
+              ></Dropdown.Select>
+              <Dropdown.List>
+                <Dropdown.Option
+                  onClick={() => dropdownSetValue("category", "duc")}
+                >
+                  duc
+                </Dropdown.Option>
+              </Dropdown.List>
+            </Dropdown>
+          </div>
         </FormRow>
         <FormGroup>
           <Textarea
             placeholder={"Write a short description...."}
             label={"Short Description *"}
+            control={control}
+            name={"Description"}
           ></Textarea>
           <Quill
             placeholder={"Write your story......"}
             name={"Story"}
             label={"Story *"}
+            setValue={setContent}
+            value={content}
           ></Quill>
         </FormGroup>
-        <div className="w-full h-[120px] bg-secondary p-10 text-white text-2xl font-bold flex items-center gap-x-5 rounded-xl bg-opacity-80 relative mb-10 ">
+        <FormRow>
+          <FormGroup>
+            <h3 className="mt-5  text-text2 text-sm block font-bold ">
+              Upload image
+            </h3>
+            <ImageUpload onChange={setValue} name={"MainImage"}></ImageUpload>
+          </FormGroup>
+          <FormGroup></FormGroup>
+        </FormRow>
+
+        <div
+          key={v4()}
+          className={`w-full h-[120px] bg-secondary p-10 text-white text-2xl font-bold flex items-center gap-x-5 rounded-xl bg-opacity-80 relative mb-10 `}
+        >
           <img
             className="absolute top-0 bottom-0 right-48"
-            src="./Union.png"
+            src={"/Union.png"}
             alt=""
           />
           <span>
@@ -134,29 +224,68 @@ const CampaignAddNew = () => {
             control={control}
             name={"CampaignTitel"}
           ></Label>
-          <LableDropDown
-            placeholder={"Select one"}
-            lable={"Campaign End Method"}
-            name={"CampaignEnd"}
-            item={"duc dz vcc"}
-          ></LableDropDown>
-          <LableDropDown
-            placeholder={"Select a country"}
-            lable={"Counrty"}
-            name={"Counrty"}
-            item={"duc dz vcc"}
-          ></LableDropDown>
+          <div>
+            <h3 className="mt-5  text-text2 text-sm block font-bold  ">
+              Campaign End Method
+            </h3>
+            <Dropdown>
+              <Dropdown.Select
+                placeholder={
+                  watch("CampaignEnd") !== ""
+                    ? watch("CampaignEnd")
+                    : "Select one"
+                }
+              ></Dropdown.Select>
+              <Dropdown.List>
+                <Dropdown.Option
+                  onClick={() => dropdownSetValue("CampaignEnd", "duc")}
+                >
+                  duc
+                </Dropdown.Option>
+              </Dropdown.List>
+            </Dropdown>
+          </div>
+          <div>
+            <h3 className="mt-5  text-text2 text-sm block font-bold  ">
+              Counrty
+            </h3>
+            <Dropdown>
+              <Dropdown.Select
+                placeholder={
+                  watch("Country") !== ""
+                    ? watch("Country")
+                    : "Select a country"
+                }
+              ></Dropdown.Select>
+              <Dropdown.List>
+                <Dropdown.Search onChange={setGetCountry}></Dropdown.Search>
+                {data.length > 0 &&
+                  data.map((item, index) => (
+                    <Dropdown.Option
+                      key={v4()}
+                      onClick={() =>
+                        dropdownSetValue("Country", item?.name?.common)
+                      }
+                    >
+                      {item?.name?.common}
+                    </Dropdown.Option>
+                  ))}
+              </Dropdown.List>
+            </Dropdown>
+          </div>
           <Label
             label={"Start Date"}
             placeholder={"Start Date"}
             control={control}
             name={"StartDate"}
+            type={"date"}
           ></Label>
           <Label
             label={"End Date"}
             placeholder={"End Date"}
             control={control}
             name={"EndDate"}
+            type={"date"}
           ></Label>
         </FormRow>
         <Button

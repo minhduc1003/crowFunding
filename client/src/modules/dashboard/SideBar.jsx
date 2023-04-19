@@ -3,7 +3,6 @@ import { sideBar } from "../../constant/sidebar";
 import { NavLink } from "react-router-dom";
 
 const SideBar = () => {
-  console.log(sideBar);
   return (
     <div className="w-full md:w-[72px] md:h-[733px] rounded-3xl shadow-sdprimary px-[14px] py-10 flex justify-center flex-col md:gap-10 flex-shrink-0">
       {sideBar.map((link) => (

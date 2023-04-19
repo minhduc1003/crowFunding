@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown } from "./dropdown/index";
 
-const LableDropDown = ({ name, lable, item, placeholder }) => {
+const LableDropDown = ({ name, lable, item, placeholder, setValue }) => {
   return (
     <div>
       <label
@@ -13,10 +13,10 @@ const LableDropDown = ({ name, lable, item, placeholder }) => {
       <Dropdown>
         <Dropdown.Select placeholder={placeholder}></Dropdown.Select>
         <Dropdown.List>
-          <Dropdown.Option>{item}</Dropdown.Option>
-          <Dropdown.Option>{item}</Dropdown.Option>
-          <Dropdown.Option>{item}</Dropdown.Option>
-          <Dropdown.Option>{item}</Dropdown.Option>
+          <Dropdown.Option onClick={setValue}>{item}</Dropdown.Option>
+          <Dropdown.Option onClick={setValue}>{item}</Dropdown.Option>
+          <Dropdown.Option onClick={setValue}>{item}</Dropdown.Option>
+          <Dropdown.Option onClick={setValue}>{item}</Dropdown.Option>
         </Dropdown.List>
       </Dropdown>
     </div>

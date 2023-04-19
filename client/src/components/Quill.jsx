@@ -2,11 +2,11 @@ import React, { useMemo, useState } from "react";
 import ReactQuill, { Quill } from "react-quill";
 import ImageUploader from "quill-image-uploader";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
+import { ImageBB } from "../api/config";
 Quill.register("modules/imageUploader", ImageUploader);
 
-const QuillLable = ({ name, placeholder, label }) => {
-  const [content, setContent] = useState("");
-
+const QuillLable = ({ name, placeholder, label, setValue, value }) => {
   const modules = useMemo(
     () => ({
       toolbar: [
@@ -22,17 +22,17 @@ const QuillLable = ({ name, placeholder, label }) => {
       ],
       imageUploader: {
         upload: async (file) => {
-          // const bodyFormData = new FormData();
-          // bodyFormData.append("image", file);
-          // const response = await axios({
-          //   method: "post",
-          //   url: imgbbAPI,
-          //   data: bodyFormData,
-          //   headers: {
-          //     "Content-Type": "multipart/form-data",
-          //   },
-          // });
-          // return response.data.data.url;
+          const bodyFormData = new FormData();
+          bodyFormData.append("image", file);
+          const response = await axios({
+            method: "post",
+            url: ImageBB,
+            data: bodyFormData,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          return response.data.data.url;
         },
       },
     }),
@@ -50,8 +50,8 @@ const QuillLable = ({ name, placeholder, label }) => {
         placeholder={placeholder}
         modules={modules}
         theme="snow"
-        value={content}
-        onChange={setContent}
+        value={value}
+        onChange={setValue}
       />
     </div>
   );
