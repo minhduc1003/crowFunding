@@ -7,43 +7,41 @@ import IconProfile from "../icons/IconProfile";
 import IconWithdraw from "../icons/IconWithdraw";
 
 export const sideBar = [
-    {
-      name: "Dashboard",
-      icon:<IconDashBoard></IconDashBoard>,
-      url:"/",
-    },
-    {
-      name: "Campaign",
-      icon:<IconCampaign></IconCampaign>,
-      url:"/Campaign"
-    },
-    {
-      name: "Payment",
-      icon:<IconPayment></IconPayment>,
-      url:"/Payment"
-    },
-    {
-      name: "Withdraw",
-      icon:<IconWithdraw></IconWithdraw>,
-      url:"/Withdraw"
-    },
-    {
-      name: "Profile",
-      icon:<IconProfile></IconProfile>,
-      url:"/Profile"
-    },
-    {
-      name: "Logout",
-      icon:<IconLogout></IconLogout>,
-      url:"#",
-      onclick:()=>{}
-      
-    },
-    {
-      name: "Light/Dark",
-      icon:<IconLightDark></IconLightDark>,
-      onclick:()=>{},
-      url:"#"
-      
-    },
-  ];
+  {
+    name: "Dashboard",
+    icon: <IconDashBoard></IconDashBoard>,
+    url: "/",
+  },
+  {
+    name: "Campaign",
+    icon: <IconCampaign></IconCampaign>,
+    url: "/Campaign",
+  },
+  {
+    name: "Payment",
+    icon: <IconPayment></IconPayment>,
+    url: "/Payment",
+  },
+  {
+    name: "Withdraw",
+    icon: <IconWithdraw></IconWithdraw>,
+    url: "/Withdraw",
+  },
+  {
+    name: "Profile",
+    icon: <IconProfile></IconProfile>,
+    url: "/Profile",
+  },
+  {
+    name: "Logout",
+    icon: <IconLogout></IconLogout>,
+    url: "/logout",
+    onclick: () => {},
+  },
+  {
+    name: "Light/Dark",
+    icon: <IconLightDark></IconLightDark>,
+    onclick: () => {},
+    url: "#",
+  },
+];

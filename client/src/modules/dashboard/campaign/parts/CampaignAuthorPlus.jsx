@@ -1,6 +1,7 @@
 import React from "react";
 
-const CampaignAuthorPlus = () => {
+const CampaignAuthorPlus = ({ data }) => {
+  console.log(data);
   return (
     <div className="flex items-center gap-x-5 mb-9">
       <img
@@ -10,7 +11,7 @@ const CampaignAuthorPlus = () => {
       />
       <div className="flex flex-col gap-y-2 flex-1">
         <div className="flex gap-x-4">
-          <h3 className="text-lg font-medium">Saiful Islam</h3>
+          <h3 className="text-lg font-medium">{data.Author}</h3>
           <div className="flex gap-x-1 items-center">
             {Array(5)
               .fill(0)
@@ -35,7 +36,7 @@ const CampaignAuthorPlus = () => {
         <div className="flex items-center gap-x-3">
           <h3 className="text-sm text-primary font-semibold">02 Campaign</h3>
           <div className="w-2 h-2 rounded-full bg-text3"></div>
-          <div className="text-text3">Dhaka, Bangladesh</div>
+          <div className="text-text3">{data.Country}</div>
         </div>
       </div>
     </div>

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../components/common/Heading";
 import Gap from "../components/common/Gap";
 import CampaignGrid from "../modules/dashboard/campaign/CampaignGrid";
 import CampaignItems from "../modules/dashboard/campaign/CampaignItems";
 import CampaignFeature from "../modules/dashboard/campaign/CampaignFeature";
 import Button from "../components/Button";
+import axios from "axios";
+import useGetCampaignData from "../hooks/useGetCampaignData";
 
 const CampaignPage = () => {
+  const { data } = useGetCampaignData();
+  const dataLength = data?.length;
+  const [increment, setIncrement] = useState(3);
   return (
     <>
       <div className="mb-10 bg-white w-full px-8 py-7 flex items-center justify-between shadow-sdprimary">
@@ -43,12 +48,20 @@ const CampaignPage = () => {
       </div>
       <Heading number={4}>Your Campaign</Heading>
       <CampaignGrid type={"col1"}>
-        <CampaignFeature type={"col1"}></CampaignFeature>
-        <CampaignFeature type={"col1"}></CampaignFeature>
-        <CampaignFeature type={"col1"}></CampaignFeature>
+        {data &&
+          data
+            .slice(0, increment)
+            .map((item) => (
+              <CampaignFeature key={item.id} data={item}></CampaignFeature>
+            ))}
       </CampaignGrid>
       <Gap></Gap>
-      <Button className={"mx-auto w-fit block py-3 px-10"} kind={"ghost"}>
+      <Button
+        onClick={() => setIncrement(increment + 1)}
+        className={"mx-auto w-fit block py-3 px-10"}
+        kind={"ghost"}
+        disabled={increment === dataLength}
+      >
         See more+
       </Button>
     </>

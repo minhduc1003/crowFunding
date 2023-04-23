@@ -8,6 +8,7 @@ const Button = ({
   href,
   type = "text",
   onClick,
+  disabled,
 }) => {
   let defaultClassName = "outline-none rounded-lg px-6 py-3";
   switch (kind) {
@@ -31,6 +32,7 @@ const Button = ({
     );
   return (
     <button
+      disabled={disabled}
       type={type}
       className={` ${defaultClassName} ${className}`}
       onClick={onClick}

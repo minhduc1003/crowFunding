@@ -15,7 +15,11 @@ import { apiCategory } from "../../../api/config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageUpload from "../../../components/image/ImageUpload";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const CampaignAddNew = () => {
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
   const {
     handleSubmit,
     setValue,
@@ -47,7 +51,7 @@ const CampaignAddNew = () => {
 
   async function handleAddNew(values) {
     try {
-      await axios.post(`${apiCategory}/Category`, {
+      await axios.post(`${apiCategory}/categories `, {
         ...values,
         content,
       });
@@ -60,7 +64,7 @@ const CampaignAddNew = () => {
         Goal: "",
         AmountPrefilled: "",
         Video: "",
-        CampaignTitel: "",
+        Author: "",
         StartDate: "",
         EndDate: "",
       });
@@ -81,6 +85,11 @@ const CampaignAddNew = () => {
     };
     fetchCountry();
   }, [getCountry]);
+  useEffect(() => {
+    if (!user || !user.email) {
+      navigate("/sign-in");
+    }
+  }, [user]);
   return (
     <div className="bg-white rounded-xl py-10 px-[66px] ">
       <div className="flex justify-center items-center mb-10 ">
@@ -99,27 +108,12 @@ const CampaignAddNew = () => {
             control={control}
             name={"title"}
           ></Label>
-          <div>
-            <h3 className="mt-5  text-text2 text-sm block font-bold  ">
-              Category
-            </h3>
-            <Dropdown>
-              <Dropdown.Select
-                placeholder={
-                  watch("category") !== ""
-                    ? watch("category")
-                    : "Select category"
-                }
-              ></Dropdown.Select>
-              <Dropdown.List>
-                <Dropdown.Option
-                  onClick={() => dropdownSetValue("category", "duc")}
-                >
-                  duc
-                </Dropdown.Option>
-              </Dropdown.List>
-            </Dropdown>
-          </div>
+          <Label
+            label={"Category"}
+            placeholder={"Category"}
+            control={control}
+            name={"category"}
+          ></Label>
         </FormRow>
         <FormGroup>
           <Textarea
@@ -219,12 +213,12 @@ const CampaignAddNew = () => {
             name={"Video"}
           ></Label>
           <Label
-            label={"Campaign Titel *"}
-            placeholder={"Write a titel"}
+            label={"Author"}
+            placeholder={"Author"}
             control={control}
-            name={"CampaignTitel"}
+            name={"Author"}
           ></Label>
-          <div>
+          {/* <div>
             <h3 className="mt-5  text-text2 text-sm block font-bold  ">
               Campaign End Method
             </h3>
@@ -244,7 +238,7 @@ const CampaignAddNew = () => {
                 </Dropdown.Option>
               </Dropdown.List>
             </Dropdown>
-          </div>
+          </div> */}
           <div>
             <h3 className="mt-5  text-text2 text-sm block font-bold  ">
               Counrty
