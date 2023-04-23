@@ -13,8 +13,20 @@ import CampaignItems from "./CampaignItems";
 import { v4 } from "uuid";
 import ReactModal from "react-modal";
 import Label from "../../../components/Label";
-
+import { useParams } from "react-router-dom";
+import useGetCampaignData from "../../../hooks/useGetCampaignData";
+import slugify from "react-slugify";
+import parse from "html-react-parser";
 const CampaignView = () => {
+  const { data } = useGetCampaignData();
+  const { slug } = useParams();
+  const filter = data?.filter((item) => slugify(item.title) === slug);
+
+  const oneDay = 24 * 60 * 60 * 1000;
+  const endDate = filter ? new Date(filter[0]?.EndDate) : null;
+  const firstDate = filter ? new Date(filter[0]?.StartDate) : null;
+  const dateRemain = Math.round(Math.abs((firstDate - endDate) / oneDay));
+
   return (
     <>
       <ReactModal
@@ -78,62 +90,70 @@ const CampaignView = () => {
           </Button>
         </div>
       </ReactModal>
-      <div className="w-full h-[120px] bg-[url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/95/58/6757ed1f5681d28.jpg)] bg-cover bg-no-repeat p-10 text-white text-2xl font-bold flex items-center justify-center gap-x-5 rounded-xl   mb-10 ">
-        <p>Education</p>
-      </div>
-
-      <div
-        className={`flex items-start gap-x-10 w-full max-w-[1440px] mb-[100px]`}
-      >
-        <div className="flex-4">
-          <CampaignImage className={"h-[398px] w-full "}></CampaignImage>
-          <div className="mt-10 flex justify-center gap-x-5 ">
-            {Array(4)
-              .fill(0)
-              .map((item, index) => (
-                <img
-                  key={index}
-                  src="/Logo.png"
-                  className="w-[89px] h-[70px] rounded-lg object-cover"
-                ></img>
-              ))}
-          </div>
-        </div>
-        <div className="flex-5">
-          <CampaignCategory className="!text-sm">Architecture</CampaignCategory>
-          <CampaignTitle className="text-xl font-bold mb-6">
-            Remake - We Make architecture exhibition
-          </CampaignTitle>
-          <CampaignDesc className="text-md mb-6">
-            Remake - We Make: an exhibition about architecture's social agency
-            in the face of urbanisation
-          </CampaignDesc>
-          <CampaignAuthorPlus></CampaignAuthorPlus>
-          <div className="w-full rounded-full bg-[#EFEFEF] h-[5px] mb-6">
-            <div className="w-2/4 h-full rounded-full bg-primary"></div>
-          </div>
-          <div className="flex items-center gap-x-10 mb-4 ">
-            <CampaignInfor
-              size="big"
-              amount={"$2,000"}
-              text={"Raised of $2,500"}
-            ></CampaignInfor>
-            <CampaignInfor
-              size="big"
-              amount={"$2,000"}
-              text={"Raised of $2,500"}
-            ></CampaignInfor>
-            <CampaignInfor
-              size="big"
-              amount={"$2,000"}
-              text={"Raised of $2,500"}
-            ></CampaignInfor>
-          </div>
-          <Button kind={"primary"} className={"w-full"}>
-            Back this project
-          </Button>
-        </div>
-      </div>
+      {filter &&
+        filter.map((item) => (
+          <>
+            <div className="w-full h-[120px] bg-[url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/95/58/6757ed1f5681d28.jpg)] bg-cover bg-no-repeat p-10 text-white text-2xl font-bold flex items-center justify-center gap-x-5 rounded-xl   mb-10 ">
+              <p>{item?.category}</p>
+            </div>
+            <div
+              className={`flex items-start gap-x-10 w-full max-w-[1440px] mb-[100px]`}
+            >
+              <div className="flex-4">
+                <CampaignImage
+                  className={"h-[398px] w-full "}
+                  image={item?.MainImage?.url}
+                ></CampaignImage>
+                <div className="mt-10 flex justify-center gap-x-5 ">
+                  {Array(4)
+                    .fill(0)
+                    .map((item, index) => (
+                      <img
+                        key={index}
+                        src="/Logo.png"
+                        className="w-[89px] h-[70px] rounded-lg object-cover"
+                      ></img>
+                    ))}
+                </div>
+              </div>
+              <div className="flex-5">
+                <CampaignCategory className="!text-sm">
+                  {item?.category}
+                </CampaignCategory>
+                <CampaignTitle className="text-xl font-bold mb-6">
+                  {item?.title}
+                </CampaignTitle>
+                <CampaignDesc className="text-md mb-6">
+                  {item?.Description}
+                </CampaignDesc>
+                <CampaignAuthorPlus data={item}></CampaignAuthorPlus>
+                <div className="w-full rounded-full bg-[#EFEFEF] h-[5px] mb-6">
+                  <div className="w-2/4 h-full rounded-full bg-primary"></div>
+                </div>
+                <div className="flex items-center gap-x-10 mb-4 ">
+                  <CampaignInfor
+                    size="big"
+                    amount={item?.Goal}
+                    text={"Raised of $2,500"}
+                  ></CampaignInfor>
+                  <CampaignInfor
+                    size="big"
+                    amount={item?.AmountPrefilled}
+                    text={"Raised of $2,500"}
+                  ></CampaignInfor>
+                  <CampaignInfor
+                    size="big"
+                    amount={dateRemain}
+                    text={"Raised of $2,500"}
+                  ></CampaignInfor>
+                </div>
+                <Button kind={"primary"} className={"w-full"}>
+                  Back this project
+                </Button>
+              </div>
+            </div>
+          </>
+        ))}
 
       <div className="max-w-[1600px] mb-10">
         <div className="flex items-center justify-between shadow-sdprimary bg-white p-5 rounded-xl mb-6">
@@ -153,50 +173,7 @@ const CampaignView = () => {
           <div>
             <h2 className="text-lg font-semibold mb-5">Story</h2>
             <div className="story">
-              <img src="https://i.pinimg.com/564x/10/e8/13/10e8131edd75b69a7e8ab6830beadbb9.jpg"></img>
-              <p>
-                Capture everything in 4k, with extended battery life and pro-g
-                inspired features. Choose from three 4k recording modes: UHD, HD
-                and cinematic 24p. Use the Wi-Fi feature to connect and stream
-                your footage wirelessly directly to your iOS and Android
-                smartphones or tablets for instant sharing. The monitor has a
-                3.5" touch screen for easy navigation and built-in wifi that
-                automatically connects to the last used smartphone or tablet
-                once paired.
-              </p>
-              <img src="https://i.pinimg.com/564x/10/e8/13/10e8131edd75b69a7e8ab6830beadbb9.jpg"></img>
-              <p>
-                Capture everything in 4k, with extended battery life and pro-g
-                inspired features. Choose from three 4k recording modes: UHD, HD
-                and cinematic 24p. Use the Wi-Fi feature to connect and stream
-                your footage wirelessly directly to your iOS and Android
-                smartphones or tablets for instant sharing. The monitor has a
-                3.5" touch screen for easy navigation and built-in wifi that
-                automatically connects to the last used smartphone or tablet
-                once paired.
-              </p>
-              <img src="https://i.pinimg.com/564x/10/e8/13/10e8131edd75b69a7e8ab6830beadbb9.jpg"></img>
-              <p>
-                Capture everything in 4k, with extended battery life and pro-g
-                inspired features. Choose from three 4k recording modes: UHD, HD
-                and cinematic 24p. Use the Wi-Fi feature to connect and stream
-                your footage wirelessly directly to your iOS and Android
-                smartphones or tablets for instant sharing. The monitor has a
-                3.5" touch screen for easy navigation and built-in wifi that
-                automatically connects to the last used smartphone or tablet
-                once paired.
-              </p>
-              <img src="https://i.pinimg.com/564x/10/e8/13/10e8131edd75b69a7e8ab6830beadbb9.jpg"></img>
-              <p>
-                Capture everything in 4k, with extended battery life and pro-g
-                inspired features. Choose from three 4k recording modes: UHD, HD
-                and cinematic 24p. Use the Wi-Fi feature to connect and stream
-                your footage wirelessly directly to your iOS and Android
-                smartphones or tablets for instant sharing. The monitor has a
-                3.5" touch screen for easy navigation and built-in wifi that
-                automatically connects to the last used smartphone or tablet
-                once paired.
-              </p>
+              {filter && filter.map((item) => parse(item.content))}
             </div>
           </div>
           <div>
@@ -212,11 +189,12 @@ const CampaignView = () => {
           You also may be interested in
         </h2>
         <CampaignGrid>
-          {Array(4)
-            .fill(0)
-            .map((item) => (
-              <CampaignItems key={v4()}></CampaignItems>
-            ))}
+          {data &&
+            data
+              .slice(0, 4)
+              .map((item) => (
+                <CampaignItems key={v4()} data={item}></CampaignItems>
+              ))}
         </CampaignGrid>
       </div>
     </>
