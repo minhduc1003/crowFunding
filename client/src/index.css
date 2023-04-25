@@ -17,25 +17,32 @@ input {
 }
 .quill {
   border: 1px solid #f1f1f3;
+  @apply dark:border-darkStroke;
   border-radius: 10px;
   padding: 15px 25px;
   margin-top: 15px;
 }
 .ql-toolbar.ql-snow {
   border: none !important;
-  @apply !bg-[#B2B3BD];
-  @apply bg-opacity-20;
+  @apply !bg-[#B2B3BD] bg-opacity-20;
   padding: 12px 18px;
   border-radius: 10px;
   width: fit-content;
   margin: 0 auto;
   margin-bottom: 20px;
 }
+.ql-snow .ql-stroke {
+  @apply dark:stroke-white;
+}
+.ql-snow .ql-picker {
+  @apply dark:!text-white;
+}
 .ql-container.ql-snow {
   border: none !important;
   background: none !important;
   height: 400px;
   font-size: 16px;
+  @apply dark:text-text4;
 }
 .story {
   @apply text-text3  text-base;
@@ -44,13 +51,13 @@ input {
   @apply text-text3  text-base p-5 mb-2;
 }
 .story > h3 {
-  @apply text-text1 font-semibold text-xl p-5 mb-5;
+  @apply text-text1 font-semibold text-xl p-5 mb-5 dark:text-white;
 }
 .story > h2 {
-  @apply text-text1 font-semibold text-xl p-5 mb-5;
+  @apply text-text1 font-semibold text-xl p-5 mb-5 dark:text-white;
 }
 .story > h1 {
-  @apply text-text1 font-semibold text-xl p-5 mb-5;
+  @apply text-text1 font-semibold text-xl p-5 mb-5 dark:text-white;
 }
 .story > img {
   @apply w-full h-[400px] object-cover rounded-lg lg:h-[500px];

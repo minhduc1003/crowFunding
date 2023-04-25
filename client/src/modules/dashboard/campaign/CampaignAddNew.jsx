@@ -91,7 +91,7 @@ const CampaignAddNew = () => {
     }
   }, [user]);
   return (
-    <div className="bg-white rounded-xl py-10 px-[66px] ">
+    <div className="bg-white rounded-xl lg:py-10 lg:px-[66px] py-5 px-3 dark:bg-darkSecondary ">
       <div className="flex justify-center items-center mb-10 ">
         <div className="flex items-center gap-3 py-4 px-[56px] text-text2 bg-text4 bg-opacity-5 rounded-xl ">
           <h1 className=" font-bold text-[25px] ">Start a Campaign </h1>

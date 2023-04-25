@@ -12,7 +12,9 @@ const CampaignAuthor = ({ image = "/user.png", author }) => {
       </div>
       <p className="text-xs text-text3">
         By
-        <span className="font-semibold text-text2 ml-2">{author}</span>
+        <span className="font-semibold text-text2 ml-2 dark:text-text4">
+          {author}
+        </span>
       </p>
     </div>
   );

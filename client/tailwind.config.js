@@ -29,6 +29,7 @@ export default {
       },
       boxShadow: {
         sdprimary: "10px 10px 20px rgba(211, 211, 211, 0.25)",
+        darkShadow: "10px 10px 20px 0px #02020240",
       },
       flex: {
         2: "1 0 84%",

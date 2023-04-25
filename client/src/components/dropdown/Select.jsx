@@ -5,7 +5,7 @@ const Select = ({ placeholder = "", className = "" }) => {
   const { toggle, show } = useDropdown();
   return (
     <div
-      className={`flex items-center justify-between py-[18px] mt-3 px-6 bg-white border border-strock rounded-lg cursor-pointer text-sm text-text1 ${className}`}
+      className={`flex items-center justify-between py-[18px] mt-3 px-6 bg-white border border-strock rounded-lg dark:bg-darkSecondary dark:border-darkStroke dark:text-white cursor-pointer text-sm text-text1 ${className}`}
       onClick={toggle}
     >
       <span className="capitalize">{placeholder}</span>

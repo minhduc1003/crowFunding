@@ -14,9 +14,9 @@ const CampaignPage = () => {
   const [increment, setIncrement] = useState(3);
   return (
     <>
-      <div className="mb-10 bg-white w-full px-8 py-7 flex items-center justify-between shadow-sdprimary">
+      <div className="mb-10 bg-white w-full px-8 py-7 flex items-center justify-between shadow-sdprimary flex-col lg:flex-row gap-y-5 dark:bg-darkSecondary dark:shadow-darkShadow">
         <div className="flex gap-x-5 items-start">
-          <div className="w-[54px] h-[54px] rounded-full bg-secondary flex items-center justify-center text-white ">
+          <div className="w-[54px] h-[54px] rounded-full bg-secondary bg-opacity-60 flex items-center justify-center text-white ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -33,7 +33,7 @@ const CampaignPage = () => {
             </svg>
           </div>
           <div className="flex-1 ">
-            <h3 className="text-2xl font-semibold mb-1">
+            <h3 className="text-2xl font-semibold mb-1 dark:text-white">
               Create Your Campaign
             </h3>
             <p className="text-text3 text-sm mb-3">
@@ -42,7 +42,11 @@ const CampaignPage = () => {
             <p className="text-primary text-sm">Need any help? Learn More...</p>
           </div>
         </div>
-        <Button className={"py-4 px-6"} kind={"ghost"} href={"/Start-Campaign"}>
+        <Button
+          className={"py-3 px-6 font-semibold"}
+          kind={"ghost"}
+          href={"/Start-Campaign"}
+        >
           Create campaign
         </Button>
       </div>

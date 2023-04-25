@@ -4,17 +4,17 @@ import Button from "../../../components/Button";
 const CampaignSupport = () => {
   return (
     <div className="mb-16">
-      <h2 className="text-lg font-semibold mb-5">Support</h2>
-      <div className="bg-white shadow-sdprimary w-full py-7 px-6 flex flex-col items-center rounded-lg">
+      <h2 className="text-lg font-semibold mb-5 dark:text-white">Support</h2>
+      <div className="bg-white shadow-sdprimary w-full py-7 px-6 flex flex-col items-center rounded-lg dark:bg-darkSecondary dark:shadow-darkShadow">
         <p className="text-xl mb-8 text-text3 font-bold ">
           Pledge without reward
         </p>
         <input
           placeholder="$10"
-          className="w-full p-4 border border-solid border-text4 text-text4 rounded-md mb-5"
+          className="w-full p-4 border border-solid border-text4 text-text4 rounded-md mb-5 bg-inherit dark:border-text3"
         ></input>
-        <div className="p-5 bg-[#F6F6F6] mb-5 rounded-md">
-          <h3 className="font-semibold text-sm mb-5">
+        <div className="p-5 bg-[#F6F6F6] mb-5 rounded-md dark:bg-darkbg">
+          <h3 className="font-semibold text-sm mb-5 dark:text-white">
             Back it because you believe in it.
           </h3>
           <p className="text-text3 text-sm">

@@ -93,11 +93,11 @@ const CampaignView = () => {
       {filter &&
         filter.map((item) => (
           <>
-            <div className="w-full h-[120px] bg-[url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/95/58/6757ed1f5681d28.jpg)] bg-cover bg-no-repeat p-10 text-white text-2xl font-bold flex items-center justify-center gap-x-5 rounded-xl   mb-10 ">
+            <div className="w-full bg-[url(https://png.pngtree.com/thumb_back/fw800/back_pic/03/95/58/6757ed1f5681d28.jpg)] bg-cover bg-no-repeat p-10 text-white text-2xl font-bold flex items-center justify-center gap-x-5 rounded-xl   mb-10 ">
               <p>{item?.category}</p>
             </div>
             <div
-              className={`flex items-start gap-x-10 w-full max-w-[1440px] mb-[100px]`}
+              className={`flex items-start gap-x-10 w-full max-w-[1440px] mb-[100px] flex-col gap-y-10 lg:flex-row`}
             >
               <div className="flex-4">
                 <CampaignImage
@@ -156,23 +156,26 @@ const CampaignView = () => {
         ))}
 
       <div className="max-w-[1600px] mb-10">
-        <div className="flex items-center justify-between shadow-sdprimary bg-white p-5 rounded-xl mb-6">
-          <div className="flex items-center gap-x-14 text-sm font-medium text-text3">
+        <div className="flex items-center justify-between shadow-sdprimary bg-white p-5 rounded-xl mb-6 dark:bg-darkSecondary dark:shadow-darkShadow">
+          <div className="flex items-center flex-wrap gap-x-5 lg:gap-x-14 text-sm font-medium text-text3">
             <span className="cursor-pointer text-secondary">Campaign</span>
-            <span className="cursor-pointer ">Campaign</span>
             <span className="cursor-pointer ">Risks</span>
             <span className="cursor-pointer ">FAQ</span>
             <span className="cursor-pointer ">Updates</span>
             <span className="cursor-pointer ">Comments</span>
           </div>
-          <Button kind={"primary"} className={"!px-9 !py-4"}>
-            Back this project
-          </Button>
+          <div className="hidden">
+            <Button kind={"primary"} className={"!px-9 !py-4 "}>
+              Back this project
+            </Button>
+          </div>
         </div>
-        <div className="grid gap-x-[124px] grid-cols-[2fr,1fr]">
+        <div className="grid gap-x-[124px] grid-cols-1 lg:grid-cols-[2fr,1fr] ">
           <div>
-            <h2 className="text-lg font-semibold mb-5">Story</h2>
-            <div className="story">
+            <h2 className="text-lg font-semibold mb-5 dark:text-white">
+              Story
+            </h2>
+            <div className="story  ">
               {filter && filter.map((item) => parse(item.content))}
             </div>
           </div>

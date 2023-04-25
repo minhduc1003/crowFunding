@@ -15,7 +15,9 @@ const CampaignFeature = ({ type, data }) => {
 
   return (
     <Link to={`/Campaign/${slugify(data?.title)}`}>
-      <div className={`flex items-start gap-x-[30px] w-full max-w-[1048px] `}>
+      <div
+        className={`flex items-start gap-x-[30px] w-full max-w-[1048px] flex-col lg:flex-row `}
+      >
         <CampaignImage
           image={data?.MainImage?.url}
           className={
@@ -28,7 +30,7 @@ const CampaignFeature = ({ type, data }) => {
           <CampaignCategory className="!text-sm">
             {data?.category || "Architecture"}
           </CampaignCategory>
-          <CampaignTitle className="text-xl font-bold mb-6">
+          <CampaignTitle className="text-xl font-bold mb-6 dark:text-white">
             {data?.title || " Remake - We Make architecture exhibition"}
           </CampaignTitle>
           <CampaignDesc className="text-md mb-6">

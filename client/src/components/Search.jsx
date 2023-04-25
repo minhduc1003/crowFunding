@@ -5,11 +5,11 @@ import SearchItems from "./SearchItems";
 const Search = () => {
   const [showSearch, setShowSearch] = useState(false);
   return (
-    <div className="relative z-50">
-      <div className="bg-white rounded-full w-full max-w-[458px] shadow-sdprimary p-3 flex items-center">
+    <div className="relative z-50 lg:block hidden">
+      <div className="bg-white rounded-full w-full max-w-[458px] shadow-sdprimary p-3 flex items-center dark:bg-inherit dark:shadow-darkShadow ">
         <div className="flex-2 px-5">
           <input
-            className="bg-transparent placeholder:text-text4  text-text1 text-sm w-full outline-none"
+            className="bg-transparent placeholder:text-text4  text-text1 text-sm w-full outline-none dark:text-white"
             type="text"
             placeholder="Do fundrise now"
           ></input>
@@ -32,7 +32,7 @@ const Search = () => {
         </button>
       </div>
       {showSearch && (
-        <div className="absolute md:w-[843px] w-full top-full left-0 bg-white  translate-y-5 rounded-3xl ">
+        <div className="absolute md:w-[843px] w-full top-full left-0 bg-white  translate-y-5 rounded-3xl  ">
           <div className="flex items-center justify-between p-3 mb-5 bg-graySoft rounded-t-3xl">
             <span className="font-medium text-sm pl-4 underline">
               See all 10,124 fundraisier

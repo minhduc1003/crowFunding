@@ -42,6 +42,6 @@ export const sideBar = [
     name: "Light/Dark",
     icon: <IconLightDark></IconLightDark>,
     onclick: () => {},
-    url: "#",
+    url: "/dark",
   },
 ];
