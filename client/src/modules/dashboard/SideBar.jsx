@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { authLogOut } from "../../store/auth/auth-slice";
 import useDarkMode from "../../hooks/useDarkMode";
 
-const SideBar = () => {
+const SideBar = ({ handleClick = () => {} }) => {
   const dispatch = useDispatch();
   const [dark, setDark] = useDarkMode();
   return (
@@ -38,6 +38,7 @@ const SideBar = () => {
 
         return (
           <NavLink
+            onClick={handleClick}
             key={link.name}
             to={link.url}
             className={({ isActive }) =>
