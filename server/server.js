@@ -12,6 +12,9 @@ let users = database.users;
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 app.use(cors());
+app.use("/",(req,res)=>{
+  res.send("hello");
+})
 app.use("/api", jsonServer.defaults(), jsonServer.router("db.json"));
 app.get("/api/campaigns", verifyToken, (req, res) => {
   res.json(database.campaigns);
