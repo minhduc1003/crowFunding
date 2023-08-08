@@ -122,5 +122,5 @@ app.delete("/logout", verifyToken, (req, res) => {
   updateRefreshToken(user.name, "");
   res.sendStatus(204);
 });
-
-app.listen(5000, () => console.log("Server auth started on port 5000"));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server auth started on port 5000 ${PORT}`));
