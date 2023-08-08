@@ -1,5 +1,5 @@
 import React from "react";
-import IconFolder from "../../../../icons/iconFolder";
+import IconFolder from "../../../../icons/IconFolder";
 
 const CampaignCategory = ({ children, className }) => {
   return (
