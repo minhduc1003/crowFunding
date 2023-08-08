@@ -4,9 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "startAdd": "nodemon index.js",
-    "start": "nodemon server.js",
-    "startAuth": "nodemon authServer.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
