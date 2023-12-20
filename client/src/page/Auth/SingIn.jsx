@@ -101,7 +101,7 @@ const SingIn = () => {
         </Link>
         {/* <Submit type={"submit"} content={"Create my account"}></Submit> */}
         <Button kind={"primary"} className={"w-full"}>
-          Create my account
+          Sign In
         </Button>
       </form>
     </LayoutAuthentication>

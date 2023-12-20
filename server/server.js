@@ -12,9 +12,6 @@ let users = database.users;
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 app.use(cors());
-app.use("/",(req,res)=>{
-  res.send("hello");
-})
 app.use("/api", jsonServer.defaults(), jsonServer.router("db.json"));
 app.get("/api/campaigns", verifyToken, (req, res) => {
   res.json(database.campaigns);
@@ -126,4 +123,4 @@ app.delete("/logout", verifyToken, (req, res) => {
   res.sendStatus(204);
 });
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server auth started on port 5000 ${PORT}`));
+app.listen(PORT, () => console.log(`Server auth started on port ${PORT}`));

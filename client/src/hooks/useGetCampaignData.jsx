@@ -6,7 +6,7 @@ export default function useGetCampaignData() {
 
   useEffect(() => {
     async function handleFetchData() {
-      const res = await axios.get("https://backend-app-3662c6e6c455.herokuapp.com/api/categories");
+      const res = await axios.get("http://localhost:4000/api/categories");
       setData(res?.data);
     }
     handleFetchData();
