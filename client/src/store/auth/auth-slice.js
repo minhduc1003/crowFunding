@@ -23,7 +23,10 @@ const authSlice = createSlice({
       ...action.payload,
     }),
     authRefreshToken: (state, action) => ({}),
-    authLogOut: (state, action) => ({}),
+    authLogOut: (state, action) => ({
+      user: undefined,
+      accessToken: null,
+    }),
   },
 });
 export const {

@@ -3,7 +3,9 @@ import Search from "../../components/Search";
 import DashBoardFund from "./DashBoardFund";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const TopBar = ({ onClick = () => {} }) => {
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className="flex justify-between items-center mb-8">
       <div className="flex items-center gap-x-14 ">
@@ -14,9 +16,11 @@ const TopBar = ({ onClick = () => {} }) => {
       </div>
       <div className="flex items-center gap-x-10">
         {/* <DashBoardFund></DashBoardFund> */}
-        <Button kind={"secondary"} href={"/Start-Campaign"}>
+        {user===undefined?<Button kind={"secondary"} href={"/sign-in"}>
+          login
+        </Button>:<Button kind={"secondary"} href={"/Start-Campaign"}>
           Start a campaign
-        </Button>
+        </Button>}
         <div className="w-12 h-12 rounded-full lg:block hidden">
           <img
             className="w-full h-full rounded-full object-cover "
