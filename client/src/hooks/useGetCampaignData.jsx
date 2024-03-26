@@ -6,7 +6,9 @@ export default function useGetCampaignData() {
 
   useEffect(() => {
     async function handleFetchData() {
-      const res = await axios.get("http://localhost:4000/api/categories");
+      const res = await axios.get(
+        "http://ducozil1003.io.vn:3001/api/categories"
+      );
       setData(res?.data);
     }
     handleFetchData();
