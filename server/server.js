@@ -1,7 +1,7 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const jsonServer = require("json-server");
-const https = require("https");
+const http = require("http");
 const express = require("express");
 const app = express();
 app.use(express.json());
@@ -130,11 +130,8 @@ app.delete("/logout", verifyToken, (req, res) => {
   updateRefreshToken(user.name, "");
   res.sendStatus(204);
 });
-const options = {
-  key: fs.readFileSync("./certificate/key.pem"),
-  cert: fs.readFileSync("./certificate/cert.pem"),
-};
-const server = https.createServer(options, app);
+
+const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
